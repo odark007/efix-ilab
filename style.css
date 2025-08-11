@@ -920,7 +920,8 @@ body {
     
     .nav-menu {
         position: fixed;
-        top: 69px; 
+        top: 69px;
+        bottom: 0; 
         left: 0;
         width: 100%;
         background: white;
