@@ -2,53 +2,49 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- CONFIGURATION ROUTER ---
-    // Maps page paths to their specific configurations.
     const pageConfigs = {
         '/index.html': {
             title: 'eFix iLab - Professional Device Repair',
-            ogTitle: 'efix ilab Technologies',
-            ogImage: 'https://efixilab.netlify.app/assets/joel-headshot-4.jpeg',
-            ogUrl: 'https://efixilab.netlify.app/'
+            // ... (other configs)
         },
         '/service-centre.html': {
             title: 'Our Service Centres - eFix iLab',
-            ogTitle: 'eFix iLab Service Centre Locations',
-            ogImage: 'https://efixilab.netlify.app/assets/joel-headshot-4.jpeg', // Should be a relevant image
-            ogUrl: 'https://efixilab.netlify.app/service-centre.html'
+            // ... (other configs)
         },
-        // Add new page configurations here
+        '/services.html': {
+            title: 'Our Repair Services - eFix iLab',
+            // ... (other configs)
+        },
+        // ADDED CONFIG FOR NEW CONTACT PAGE
+        '/contact.html': {
+            title: 'Contact Us - eFix iLab',
+            ogTitle: 'Contact eFix iLab for Professional Device Repair',
+            ogImage: 'https://efixilab.netlify.app/assets/joel-headshot-4.jpeg',
+            ogUrl: 'https://efixilab.netlify.app/contact.html'
+        }
     };
 
-    // Determine the current page's path, default to /index.html if root
     const currentPage = window.location.pathname === '/' ? '/index.html' : window.location.pathname;
-    
-    // Get the configuration for the current page, or default to the index config
     const pageConfig = pageConfigs[currentPage] || pageConfigs['/index.html'];
 
-
-    /**
-     * Dynamically populates the <head> of the document.
-     * @param {object} config - The page configuration object.
-     */
+    /** Dynamically populates the <head> */
     const loadHeadContent = (config) => {
         document.title = config.title;
         const metaTags = `
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta property="og:title" content="${config.ogTitle}" />
+            <meta property="og:title" content="${config.ogTitle || config.title}" />
             <meta property="og:type" content="website" />
-            <meta property="og:image" content="${config.ogImage}" />
-            <meta property="og:url" content="${config.ogUrl}" />
+            <meta property="og:image" content="${config.ogImage || ''}" />
+            <meta property="og:url" content="${config.ogUrl || ''}" />
             <link rel="stylesheet" href="style.css">
+            <!-- ADDED FONT AWESOME FOR ICONS -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         `;
         document.head.innerHTML = metaTags + document.head.innerHTML;
     };
 
-    // (The rest of the script remains unchanged)
-    
-    /**
-     * Fetches and injects an HTML component.
-     */
+    /** Fetches and injects an HTML component. */
     const loadComponent = (url, placeholderId, callback) => {
         fetch(url)
             .then(response => response.ok ? response.text() : Promise.reject(`Failed to load ${url}`))
@@ -59,9 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error(`Error loading component: ${error}`));
     };
     
-    /**
-     * Initializes all interactive event listeners.
-     */
+    /** Initializes all interactive event listeners. */
     const initializePageEventListeners = () => {
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -73,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Scroll animations
-        const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -82,7 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, observerOptions);
-        document.querySelectorAll('.service-card').forEach(card => observer.observe(card));
+        
+        // UPDATED: Observer now looks for all card types across the site
+        const elementsToAnimate = document.querySelectorAll('.service-card, .service-category, .contact-card, .location-card, .hours-card, .social-card');
+        elementsToAnimate.forEach(el => observer.observe(el));
+
 
         // Smooth scrolling & close mobile menu on link click
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
