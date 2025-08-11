@@ -34,7 +34,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #ffb6d5, #e75480);
+    background: linear-gradient(90deg, #e9ecef, #495057);
 }
 
 .profile-image {
