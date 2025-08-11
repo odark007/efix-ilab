@@ -1,4 +1,3 @@
-// START OF FILE: script.js
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- CONFIGURATION ROUTER ---
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Our Repair Services - eFix iLab',
             // ... (other configs)
         },
-        // ADDED CONFIG FOR NEW CONTACT PAGE
         '/contact.html': {
             title: 'Contact Us - eFix iLab',
             ogTitle: 'Contact eFix iLab for Professional Device Repair',
@@ -27,7 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPage = window.location.pathname === '/' ? '/index.html' : window.location.pathname;
     const pageConfig = pageConfigs[currentPage] || pageConfigs['/index.html'];
 
-    /** Dynamically populates the <head> */
+    /** 
+     * Dynamically populates the <head> with the title, meta tags, and Font Awesome.
+     * The main stylesheet is now linked directly in the HTML to prevent FOUC.
+     */
     const loadHeadContent = (config) => {
         document.title = config.title;
         const metaTags = `
@@ -37,10 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <meta property="og:type" content="website" />
             <meta property="og:image" content="${config.ogImage || ''}" />
             <meta property="og:url" content="${config.ogUrl || ''}" />
-            <link rel="stylesheet" href="style.css">
             <!-- ADDED FONT AWESOME FOR ICONS -->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         `;
+        // **CORRECTION**: The line that injected style.css has been removed from this template literal.
         document.head.innerHTML = metaTags + document.head.innerHTML;
     };
 
