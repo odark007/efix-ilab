@@ -4,21 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageConfigs = {
         '/index.html': {
             title: 'eFix iLab - Professional Device Repair',
-            // ... (other configs)
         },
         '/service-centre.html': {
             title: 'Our Service Centres - eFix iLab',
-            // ... (other configs)
         },
         '/services.html': {
             title: 'Our Repair Services - eFix iLab',
-            // ... (other configs)
         },
         '/contact.html': {
             title: 'Contact Us - eFix iLab',
-            ogTitle: 'Contact eFix iLab for Professional Device Repair',
-            ogImage: 'https://efixilab.netlify.app/assets/joel-headshot-4.jpeg',
-            ogUrl: 'https://efixilab.netlify.app/contact.html'
         }
     };
 
@@ -26,23 +20,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageConfig = pageConfigs[currentPage] || pageConfigs['/index.html'];
 
     /** 
-     * Dynamically populates the <head> with the title, meta tags, and Font Awesome.
-     * The main stylesheet is now linked directly in the HTML to prevent FOUC.
+     * Dynamically populates the <head> with the title and Font Awesome.
+     * OG tags and the main stylesheet are now linked directly in each HTML file.
      */
     const loadHeadContent = (config) => {
-        document.title = config.title;
-        const metaTags = `
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta property="og:title" content="${config.ogTitle || config.title}" />
-            <meta property="og:type" content="website" />
-            <meta property="og:image" content="${config.ogImage || ''}" />
-            <meta property="og:url" content="${config.ogUrl || ''}" />
-            <!-- ADDED FONT AWESOME FOR ICONS -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        `;
-        // **CORRECTION**: The line that injected style.css has been removed from this template literal.
-        document.head.innerHTML = metaTags + document.head.innerHTML;
+        // Set the browser tab title
+        if (config && config.title) {
+            document.title = config.title;
+        }
+
+        // Create and append Font Awesome stylesheet
+        const fontAwesome = document.createElement('link');
+        fontAwesome.rel = 'stylesheet';
+        fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+        document.head.appendChild(fontAwesome);
     };
 
     /** Fetches and injects an HTML component. */
@@ -78,8 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, observerOptions);
         
-        // UPDATED: Observer now looks for all card types across the site
-        const elementsToAnimate = document.querySelectorAll('.service-card, .service-category, .contact-card, .location-card, .hours-card, .social-card');
+        const elementsToAnimate = document.querySelectorAll('.service-card, .service-category, .contact-card, .location-card, .hours-card, .social-card, .feature-card');
         elementsToAnimate.forEach(el => observer.observe(el));
 
 
