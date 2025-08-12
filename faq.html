@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Open Graph for SM -->
+    <meta content="efix ilab technology" property="og:title" />
+    <meta property="og:type" content="website" />
+    <meta content="https://efixilab.netlify.app/assets/og-headshot-1.jpg" property="og:image" />
+    <meta property="og:url" content="https://efixilab.netlify.app/" />
+
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="faq.css">
+    
+    <!-- Main script for header/footer loading -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Page Content -->
+    <main>
+        <!-- Page-specific Hero Section -->
+        <section class="page-hero">
+            <div class="container">
+                <h1 class="hero-title">Frequently Asked Questions</h1>
+                <p class="hero-subtitle">Find quick answers to common questions about our repair services, policies, and processes. Can't find what you're looking for? We're here to help!</p>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="container">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-box" placeholder="Search for answers..." id="searchInput">
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container" id="faqContainer">
+                <!-- General Questions -->
+                <div class="faq-category">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-question-circle"></i></div>
+                        <h2 class="category-title">General Questions</h2>
+                    </div>
+                    <div class="faq-item"><button class="faq-question"><span class="question-text">How long do repairs take?</span><i class="fas fa-chevron-down toggle-icon"></i></button><div class="faq-answer"><p class="answer-text">Depends on the nature of the issue. Most common repairs like screen replacements can be completed within 30-60 minutes, while more complex issues may take 24-48 hours.</p></div></div>
+                    <div class="faq-item"><button class="faq-question"><span class="question-text">Do you use genuine parts?</span><i class="fas fa-chevron-down toggle-icon"></i></button><div class="faq-answer"><p class="answer-text">Yes, we source for genuine parts only. We believe in providing quality repairs that last, which is why we only use authentic, high-quality components for all our services.</p></div></div>
+                    <div class="faq-item"><button class="faq-question"><span class="question-text">How much do repairs cost?</span><i class="fas fa-chevron-down toggle-icon"></i></button><div class="faq-answer"><p class="answer-text">Depends on the nature of the issue. We provide free diagnostics and will give you a detailed quote before proceeding with any repair work. Our prices are competitive and transparent with no hidden fees.</p></div></div>
+                    <div class="faq-item"><button class="faq-question"><span class="question-text">Do you offer pickup/delivery?</span><i class="fas fa-chevron-down toggle-icon"></i></button><div class="faq-answer"><p class="answer-text">Yes, we offer delivery and pick up services for your convenience. Contact us to arrange pickup from your location and we'll deliver your repaired device back to you.</p></div></div>
+                </div>
+
+                <!-- iPhone Repairs -->
+                <div class="faq-category">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fab fa-apple"></i></div>
+                        <h2 class="category-title">iPhone Repairs</h2>
+                    </div>
+                    <div class="faq-item"><button class="faq-question"><span class="question-text">What iPhone models do you repair?</span><i class="fas fa-chevron-down toggle-icon"></i></button><div class="faq-answer"><p class="answer-text">All models. We repair every iPhone model from the original iPhone to the latest iPhone 15 series. Our technicians are trained to work on all generations and variants.</p></div></div>
+                    <div class="faq-item"><button class="faq-question"><span class="question-text">How long does iPhone screen replacement take?</span><i class="fas fa-chevron-down toggle-icon"></i></button><div class="faq-answer"><p class="answer-text">Most iPhone screen replacements are completed within 30-60 minutes, depending on the model and availability of parts. We offer express service for urgent repairs.</p></div></div>
+                </div>
+                
+                <!-- No Results Message -->
+                <div class="no-results" id="noResults">
+                    <h3>No Results Found</h3>
+                    <p>We couldn't find any questions matching your search. Try different keywords or contact us directly.</p>
+                    <div class="contact-suggestion">
+                        <a href="contact.html" class="contact-btn"><i class="fas fa-envelope"></i> Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Still Need Help Section -->
+        <section class="help-section">
+            <div class="container">
+                <h2 class="help-title">Still Have Questions?</h2>
+                <p class="help-subtitle">Our friendly team is always ready to help. Get in touch with us through our contact page.</p>
+                <a href="contact.html" class="help-btn"><i class="fas fa-headset"></i> Go to Contact Page</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Page-specific JavaScript -->
+    <script src="faq.js" defer></script>
+</body>
+</html>

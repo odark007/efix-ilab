@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         '/contact.html': {
             title: 'Contact Us - eFix iLab',
-        }
+        },
+        '/faq.html': { title: 'FAQ - eFix iLab' }
     };
 
     const currentPage = window.location.pathname === '/' ? '/index.html' : window.location.pathname;
