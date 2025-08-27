@@ -1605,3 +1605,52 @@ body {
         font-size: 1.1rem;
     }
 }
+
+
+.location-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Centers all children horizontally */
+    text-align: center;   /* Fallback for text centering */
+    /* Retain existing styles like padding, background, etc. if not already defined */
+}
+
+.address-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;  /* Space between icon and text */
+    width: fit-content;  /* Prevents full-width stretching */
+    margin: 1rem auto 0; /* Top margin for spacing, auto for horizontal centering */
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+    color: var(--white);
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.address-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(14, 165, 233, 0.3);
+}
+
+/* Mobile adjustments to maintain centering */
+@media screen and (max-width: 768px) {
+    .location-card {
+        align-items: center;  /* Reinforce centering */
+    }
+    
+    .address-link {
+        padding: 0.7rem 1.2rem;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .address-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
