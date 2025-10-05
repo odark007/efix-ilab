@@ -1654,3 +1654,144 @@ body {
         font-size: 0.9rem;
     }
 }
+
+/* Repair Status Page Styles - Add this to style.css */
+
+/* Repair Status Section */
+.repair-status-section {
+    padding: 4rem 0;
+    background: var(--white);
+}
+
+.form-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.job-status-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 0.8rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
+    background: var(--bg-light);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.form-input::placeholder {
+    color: #94a3b8;
+    font-family: 'Courier New', monospace;
+}
+
+.form-input.input-error {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.05);
+}
+
+.form-input.input-error:focus {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-error {
+    display: none;
+    color: #ef4444;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid #ef4444;
+}
+
+.job-status-form .cta-button {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+}
+
+.job-status-form .cta-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Info Help Section */
+.info-help-section {
+    padding: 6rem 0;
+    background: var(--bg-light);
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    .repair-status-section {
+        padding: 3rem 0;
+    }
+    
+    .form-card {
+        padding: 2rem 1.5rem;
+        border-radius: 15px;
+    }
+    
+    .form-label {
+        font-size: 1rem;
+    }
+    
+    .form-input {
+        padding: 0.9rem 1.2rem;
+        font-size: 1rem;
+    }
+    
+    .job-status-form .cta-button {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .info-help-section {
+        padding: 4rem 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .form-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .form-input {
+        font-size: 0.95rem;
+        padding: 0.8rem 1rem;
+    }
+    
+    .form-label {
+        font-size: 0.95rem;
+    }
+}

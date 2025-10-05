@@ -16,7 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         '/faq.html': { 
             title: 'FAQ - eFix iLab' 
-        }
+        },
+        '/repair-status.html': {
+            title: 'Check Repair Status - eFix iLab'
+    }
     };
 
     const currentPage = window.location.pathname === '/' ? '/index.html' : window.location.pathname;

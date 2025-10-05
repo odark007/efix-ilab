@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Check your device repair status at eFix iLab. Enter your Job ID to track repair progress.">
+    <meta content="Check Repair Status - eFix iLab" property="og:title" />
+    <meta property="og:type" content="website" />
+    <meta content="https://efixilab.netlify.app/assets/og-headshot-1.jpg" property="og:image" />
+    <meta property="og:url" content="https://efixilab.netlify.app/repair-status.html" />
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    
+    <main>
+        <!-- Hero Section -->
+        <section class="page-hero">
+            <div class="container">
+                <h1 class="hero-title">Check Your Job Progress</h1>
+                <p class="hero-subtitle">Enter your Job ID below to view the current status of your device repair</p>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section class="repair-status-section">
+            <div class="container">
+                <div class="form-card">
+                    <form id="jobStatusForm" class="job-status-form">
+                        <div class="form-group">
+                            <label for="jobId" class="form-label">Job ID</label>
+                            <input 
+                                type="text" 
+                                id="jobId" 
+                                name="jobId" 
+                                class="form-input" 
+                                placeholder="e.g., cmgamtx9u0001kv09r69vkmob"
+                                required
+                                aria-describedby="jobIdError"
+                                autocomplete="off"
+                            >
+                            <div id="jobIdError" class="form-error" role="alert" aria-live="polite"></div>
+                        </div>
+                        <button type="submit" class="cta-button" id="submitBtn">
+                            Check Status
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section class="info-help-section">
+            <div class="container">
+                <h3 class="section-title">Where to Find Your Job ID</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-receipt"></i>
+                        </div>
+                        <h4>Check Your SMS</h4>
+                        <p>Your Job ID is sent to the phone number.</p>
+                    </div>
+             <!--       <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email Confirmation</h4>
+                        <p>Check your email inbox for our confirmation message. The Job ID is included in the subject line and body.</p>
+                    </div> -->
+                <!--     <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Contact Support</h4>
+                        <p>Can't find your Job ID? Our service team can look it up using your phone number or email address.</p>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Job Status Form Handler
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('jobStatusForm');
+            const jobIdInput = document.getElementById('jobId');
+            const errorDiv = document.getElementById('jobIdError');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Validation function
+            const validateJobId = (input) => {
+                const trimmedInput = input.trim();
+                const validPattern = /^[a-z0-9]+$/;
+                return {
+                    isValid: validPattern.test(trimmedInput),
+                    value: trimmedInput
+                };
+            };
+
+            // Show error message
+            const showError = (message) => {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+                jobIdInput.classList.add('input-error');
+                jobIdInput.setAttribute('aria-invalid', 'true');
+            };
+
+            // Clear error message
+            const clearError = () => {
+                errorDiv.textContent = '';
+                errorDiv.style.display = 'none';
+                jobIdInput.classList.remove('input-error');
+                jobIdInput.setAttribute('aria-invalid', 'false');
+            };
+
+            // Clear error on input
+            jobIdInput.addEventListener('input', () => {
+                if (errorDiv.style.display === 'block') {
+                    clearError();
+                }
+            });
+
+            // Form submission handler
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                clearError();
+
+                const inputValue = jobIdInput.value;
+                const validation = validateJobId(inputValue);
+
+                if (!validation.value) {
+                    showError('Please enter your Job ID');
+                    return;
+                }
+
+                if (!validation.isValid) {
+                    showError('Job ID can only contain lowercase letters and numbers');
+                    return;
+                }
+
+                // Valid submission - update button and redirect
+                submitBtn.textContent = 'Checking...';
+                submitBtn.disabled = true;
+
+                // Construct the URL and redirect
+                const baseURL = 'https://efixilab-crm.regr.online/job/';
+                const redirectURL = `${baseURL}${validation.value}/view`;
+                
+                // Small delay to show "Checking..." state
+                setTimeout(() => {
+                    window.location.href = redirectURL;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
