@@ -142,18 +142,10 @@
                     return;
                 }
 
-                // Valid submission - update button and redirect
-                submitBtn.textContent = 'Checking...';
-                submitBtn.disabled = true;
-
-                // Construct the URL and redirect
+                // Valid submission - redirect immediately
                 const baseURL = 'https://efixilab-crm.regr.online/job/';
                 const redirectURL = `${baseURL}${validation.value}/view`;
-                
-                // Small delay to show "Checking..." state
-                setTimeout(() => {
-                    window.location.href = redirectURL;
-                }, 300);
+                window.location.href = redirectURL;
             });
         });
     </script>
